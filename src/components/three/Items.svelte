@@ -8,24 +8,37 @@
     TableRow,
     TableCell,
   } from "@/lib/ui/table";
+  import { threeStore } from "./store.svelte";
 </script>
 
 <Table>
-  <TableCaption>List of Items</TableCaption>
+  <TableCaption>
+    {#if threeStore.selectedCategory}
+      Items de la catégorie {threeStore.selectedCategory}
+    {:else}
+      Liste de tous les items
+    {/if}
+  </TableCaption>
   <TableHeader>
     <TableRow>
       <TableHead>Item</TableHead>
       <TableHead>Description</TableHead>
+      <TableHead>Catégorie</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
-    <TableRow>
-      <TableCell>Item 1</TableCell>
-      <TableCell>Description for Item 1</TableCell>
-    </TableRow>
-    <TableRow>
-      <TableCell>Item 2</TableCell>
-      <TableCell>Description for Item 2</TableCell>
-    </TableRow>
+    {#if threeStore.filteredItems.length === 0}
+      <TableRow>
+        <TableCell colspan={3}>Aucun item trouvé</TableCell>
+      </TableRow>
+    {:else}
+      {#each threeStore.filteredItems as item (item.id)}
+        <TableRow>
+          <TableCell>{item.name}</TableCell>
+          <TableCell>{item.description}</TableCell>
+          <TableCell>{item.category}</TableCell>
+        </TableRow>
+      {/each}
+    {/if}
   </TableBody>
 </Table>

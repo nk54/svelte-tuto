@@ -6,15 +6,33 @@
     SelectGroup,
     SelectItem,
   } from "@/lib/ui/select";
+  import { threeStore } from "./store.svelte";
+
+  let selectedValue = $state<string>("");
+
+  // Mettre à jour le store quand la sélection change
+  $effect(() => {
+    threeStore.selectedCategory =
+      selectedValue && selectedValue !== "" ? selectedValue : null;
+  });
 </script>
 
-<Select type="single">
+<Select bind:value={selectedValue} type="single">
   <SelectTrigger>
-    <span>Select a filter</span>
+    <span>
+      {#if threeStore.selectedCategory}
+        Catégorie {threeStore.selectedCategory}
+      {:else}
+        Toutes les catégories
+      {/if}
+    </span>
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
-      <SelectItem value="grayscale">Grayscale</SelectItem>
+      <SelectItem value="">Toutes les catégories</SelectItem>
+      {#each threeStore.categories as category}
+        <SelectItem value={category}>Catégorie {category}</SelectItem>
+      {/each}
     </SelectGroup>
   </SelectContent>
 </Select>
