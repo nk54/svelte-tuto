@@ -1,0 +1,32 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+
+const poc = [
+  { name: "One", path: "one" },
+  { name: "Two", path: "two" },
+  { name: "Three", path: "three" },
+  { name: "Four", path: "four" },
+];
+---
+
+<PrimaryLayout>
+  <div class="place-self-center">
+    <div class="flex flex-col mx-auto mb-20 p-4 max-w-2xl">
+      <h1 class="mb-6 font-bold text-3xl">Proof of concepts</h1>
+      <ul class="space-y-2 list-disc list-inside">
+        {
+          poc.map((item) => (
+            <li>
+              <a
+                href={`/poc/${item.path}`}
+                class="text-blue-500 hover:underline"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</PrimaryLayout>
