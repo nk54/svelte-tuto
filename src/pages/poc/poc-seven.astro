@@ -5,7 +5,12 @@ import { Seven } from "@/components/seven";
 
 <PrimaryLayout>
   <div class="flex flex-col gap-4 m-12">
-    <p>Poc Seven - Filtrage avec Render Props/Slots</p>
+    <h1 class="font-bold text-3xl">Pattern 7 : Render Props avec Snippets</h1>
+    <p class="text-muted-foreground text-lg">
+      Pattern avancé utilisant les Snippets de Svelte 5 pour l'inversion de contrôle. 
+      Le composant provider gère la logique et passe les données au snippet enfant qui décide du rendu. 
+      Maximum de flexibilité et de réutilisabilité, idéal pour créer des composants hautement configurables.
+    </p>
     <Seven client:load />
   </div>
 </PrimaryLayout>

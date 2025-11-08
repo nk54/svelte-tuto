@@ -5,7 +5,12 @@ import { Five } from "@/components/five";
 
 <PrimaryLayout>
   <div class="flex flex-col gap-4 m-12">
-    <p>Poc Five - Filtrage avec Composable/Hook</p>
+    <h1 class="font-bold text-3xl">Pattern 5 : Composable/Hook</h1>
+    <p class="text-muted-foreground text-lg">
+      Pattern inspiré de Vue/React : une fonction réutilisable retourne un objet avec état et méthodes. 
+      Encapsule la logique métier dans un composable qui peut être appelé depuis n'importe quel composant. 
+      Favorise la réutilisation du code et la séparation des préoccupations.
+    </p>
     <Five client:load />
   </div>
 </PrimaryLayout>
