@@ -7,8 +7,8 @@ const poc = [
     path: "poc-one",
     complexity: "⭐",
     complexityLabel: "Simple",
-    performance: "🟢",
-    performanceLabel: "Excellente",
+    performance: 9,
+    performanceLabel: "9/10",
     recommendation: "Petites apps, hiérarchie peu profonde",
     description:
       "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
@@ -22,8 +22,8 @@ const poc = [
     path: "poc-two",
     complexity: "⭐⭐",
     complexityLabel: "Modéré",
-    performance: "🟡",
-    performanceLabel: "Bonne",
+    performance: 7,
+    performanceLabel: "7/10",
     recommendation: "Apps moyennes, état global partagé",
     description:
       "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
@@ -36,8 +36,8 @@ const poc = [
     path: "poc-three",
     complexity: "⭐⭐⭐",
     complexityLabel: "Modéré+",
-    performance: "🟢",
-    performanceLabel: "Excellente",
+    performance: 10,
+    performanceLabel: "10/10",
     recommendation: "⭐ RECOMMANDÉ pour Svelte 5",
     description:
       "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
@@ -50,8 +50,8 @@ const poc = [
     path: "poc-four",
     complexity: "⭐⭐⭐",
     complexityLabel: "Intermédiaire",
-    performance: "🟢",
-    performanceLabel: "Excellente",
+    performance: 9,
+    performanceLabel: "9/10",
     recommendation: "UI libraries, thèmes, sous-arbres",
     description:
       "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
@@ -64,8 +64,8 @@ const poc = [
     path: "poc-five",
     complexity: "⭐⭐⭐⭐",
     complexityLabel: "Avancé",
-    performance: "🟢",
-    performanceLabel: "Excellente",
+    performance: 9,
+    performanceLabel: "9/10",
     recommendation: "Logique réutilisable, tests unitaires",
     description:
       "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
@@ -78,8 +78,8 @@ const poc = [
     path: "poc-six",
     complexity: "⭐⭐⭐⭐",
     complexityLabel: "Avancé",
-    performance: "🟡",
-    performanceLabel: "Bonne",
+    performance: 8,
+    performanceLabel: "8/10",
     recommendation: "Logique métier complexe, OOP",
     description:
       "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
@@ -93,8 +93,8 @@ const poc = [
     path: "poc-seven",
     complexity: "⭐⭐⭐⭐⭐",
     complexityLabel: "Expert",
-    performance: "🟢",
-    performanceLabel: "Excellente",
+    performance: 10,
+    performanceLabel: "10/10",
     recommendation: "Composants réutilisables, libraries",
     description:
       "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
@@ -159,7 +159,17 @@ const poc = [
                     </span>
                   </td>
                   <td class="px-4 py-3 text-center whitespace-nowrap">
-                    <span class="inline-block text-xl">{item.performance}</span>
+                    <span
+                      class={`inline-block text-2xl font-bold ${
+                        item.performance >= 9
+                          ? "text-green-600 dark:text-green-400"
+                          : item.performance >= 8
+                            ? "text-blue-600 dark:text-blue-400"
+                            : "text-yellow-600 dark:text-yellow-400"
+                      }`}
+                    >
+                      {item.performance}
+                    </span>
                     <br />
                     <span class="text-gray-500 dark:text-gray-400 text-xs">
                       {item.performanceLabel}
@@ -200,8 +210,16 @@ const poc = [
                   <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
                     {item.complexity} {item.complexityLabel}
                   </span>
-                  <span class="bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
-                    {item.performance} {item.performanceLabel}
+                  <span
+                    class={`px-3 py-1 rounded-full font-bold text-xs whitespace-nowrap ${
+                      item.performance >= 9
+                        ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                        : item.performance >= 8
+                          ? "bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300"
+                          : "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300"
+                    }`}
+                  >
+                    {item.performanceLabel}
                   </span>
                 </div>
               </div>
