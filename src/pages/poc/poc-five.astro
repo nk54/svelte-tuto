@@ -1,0 +1,16 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Five } from "@/components/five";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <h1>Poc Five</h1>
+    <h2>État dans classe (Instance partagée)</h2>
+    <p>
+      Utilisation d'une classe partagée entre les composants.<br />
+      Le composant orchestrateur distribue le manager.
+    </p>
+    <Five client:load />
+  </div>
+</PrimaryLayout>
