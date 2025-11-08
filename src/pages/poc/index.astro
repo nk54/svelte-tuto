@@ -2,32 +2,63 @@
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
 
 const poc = [
-  { name: "One", path: "poc-one" },
-  { name: "Two", path: "poc-two" },
-  { name: "Three", path: "poc-three" },
-  { name: "Four", path: "poc-four" },
-  { name: "Five", path: "poc-five" },
+  { name: "One", path: "poc-one", description: "Exemple de base" },
+  { name: "Two", path: "poc-two", description: "Exemple 2" },
+  { name: "Three", path: "poc-three", description: "Filtrage avec Store (Runes Svelte 5)" },
+  { name: "Four", path: "poc-four", description: "Filtrage avec Props + Callbacks" },
+  { name: "Five", path: "poc-five", description: "Filtrage avec Classe .svelte.ts" },
+  { name: "Six", path: "poc-six", description: "Filtrage avec Context API" },
+  { name: "Seven", path: "poc-seven", description: "Filtrage avec Composable/Hook" },
+  { name: "Eight", path: "poc-eight", description: "Filtrage avec Derived Store" },
+  { name: "Nine", path: "poc-nine", description: "Filtrage avec Render Props/Slots" },
 ];
 ---
 
 <PrimaryLayout>
   <div class="place-self-center">
-    <div class="flex flex-col mx-auto mb-20 p-4 max-w-2xl">
-      <h1 class="mb-6 font-bold text-3xl">Proof of concepts</h1>
-      <ul class="space-y-2 list-disc list-inside">
+    <div class="flex flex-col mx-auto mb-20 p-4 max-w-4xl">
+      <h1 class="mb-6 font-bold text-4xl">Proof of Concepts - Patterns Svelte 5</h1>
+      
+      <div class="bg-blue-50 dark:bg-blue-900/20 mb-8 p-4 rounded-lg">
+        <h2 class="mb-2 font-semibold text-xl">🎯 Comparaison des Patterns de Gestion d'État</h2>
+        <p class="text-gray-700 dark:text-gray-300 text-sm">
+          Ce projet démontre 7 approches différentes pour gérer l'état et le filtrage de données dans Svelte 5.
+          Consultez <a href="/PATTERNS_COMPARISON.md" class="text-blue-600 dark:text-blue-400 underline">PATTERNS_COMPARISON.md</a> pour une comparaison détaillée.
+        </p>
+      </div>
+
+      <ul class="space-y-3">
         {
           poc.map((item) => (
-            <li>
+            <li class="hover:shadow-md p-4 border rounded-lg transition-shadow">
               <a
                 href={`/poc/${item.path}`}
-                class="text-blue-500 hover:underline"
+                class="flex flex-col"
               >
-                {item.name}
+                <span class="font-semibold text-blue-600 dark:text-blue-400 text-lg hover:underline">
+                  {item.name}
+                </span>
+                <span class="text-gray-600 dark:text-gray-400 text-sm">
+                  {item.description}
+                </span>
               </a>
             </li>
           ))
         }
       </ul>
+
+      <div class="bg-gray-50 dark:bg-gray-800 mt-8 p-4 rounded-lg">
+        <h3 class="mb-2 font-semibold text-lg">📚 Légende des Patterns de Filtrage</h3>
+        <ul class="space-y-1 text-sm">
+          <li><strong>Three</strong> : Store global avec runes $state/$derived</li>
+          <li><strong>Four</strong> : Props descendantes + callbacks remontants</li>
+          <li><strong>Five</strong> : Classe orientée objet avec runes</li>
+          <li><strong>Six</strong> : Context API (setContext/getContext)</li>
+          <li><strong>Seven</strong> : Composable/Hook pattern (like React)</li>
+          <li><strong>Eight</strong> : Derived Store (writable + derived)</li>
+          <li><strong>Nine</strong> : Render Props avec Snippets Svelte 5</li>
+        </ul>
+      </div>
     </div>
   </div>
 </PrimaryLayout>

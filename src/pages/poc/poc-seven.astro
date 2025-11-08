@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Seven } from "@/components/seven";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <p>Poc Seven - Filtrage avec Composable/Hook</p>
+    <Seven client:load />
+  </div>
+</PrimaryLayout>

@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Six } from "@/components/six";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <p>Poc Six - Filtrage avec Context API</p>
+    <Six client:load />
+  </div>
+</PrimaryLayout>

@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Nine } from "@/components/nine";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <p>Poc Nine - Filtrage avec Render Props/Slots</p>
+    <Nine client:load />
+  </div>
+</PrimaryLayout>

@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Eight } from "@/components/eight";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <p>Poc Eight - Filtrage avec Derived Store</p>
+    <Eight client:load />
+  </div>
+</PrimaryLayout>
