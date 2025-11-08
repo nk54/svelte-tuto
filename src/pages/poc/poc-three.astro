@@ -21,6 +21,16 @@ import { Three } from "@/components/three";
         <li><strong>Autre :</strong> Fine-grained reactivity comme SolidJS</li>
       </ul>
     </div>
+    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 border border-purple-200 dark:border-purple-800 rounded-lg">
+      <p class="mb-2 font-semibold text-purple-900 dark:text-purple-100 text-sm">✅ Utilisez ce pattern si :</p>
+      <ul class="space-y-1 text-purple-800 dark:text-purple-200 text-sm">
+        <li>✓ Vous voulez un <strong>état global</strong> partagé</li>
+        <li>✓ Plusieurs composants <strong>non liés</strong> doivent accéder aux mêmes données</li>
+        <li>✓ Vous avez <strong>une seule instance</strong> (ex: préférences utilisateur, thème, panier)</li>
+        <li>✓ Vous voulez éviter le prop drilling</li>
+        <li>✓ Vous utilisez <strong>Svelte 5</strong> et voulez la syntaxe moderne</li>
+      </ul>
+    </div>
     <Three client:load />
   </div>
 </PrimaryLayout>

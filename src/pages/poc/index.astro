@@ -12,6 +12,13 @@ const poc = [
     recommendation: "Petites apps, hiérarchie peu profonde",
     descriptionText:
       "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
+    useCases: [
+      "Vous débutez avec Svelte ou les runes",
+      "Votre application est petite avec peu de composants",
+      "La hiérarchie est peu profonde (2-3 niveaux max)",
+      "Vous voulez un code simple et explicite",
+      "Le flux de données est unidirectionnel et clair",
+    ],
     equivalents: [
       "React : useState + props drilling",
       "Vue : data() + props",
@@ -35,6 +42,13 @@ const poc = [
     recommendation: "Apps moyennes, état global partagé",
     descriptionText:
       "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
+    useCases: [
+      "Vous maintenez une app Svelte 3/4 existante",
+      "Vous voulez un état global partagé entre composants distants",
+      "Vous êtes familier avec Redux/Pinia",
+      "Vous avez besoin de valeurs dérivées complexes",
+      "⚠️ Note : Pour Svelte 5, préférez le Pattern 3 (Store Runes)",
+    ],
     equivalents: [
       "React : Redux (createStore + selectors)",
       "Vue : Pinia stores avec computed",
@@ -57,6 +71,13 @@ const poc = [
     recommendation: "⭐ RECOMMANDÉ pour Svelte 5",
     descriptionText:
       "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
+    useCases: [
+      "Vous voulez un état global partagé",
+      "Plusieurs composants non liés doivent accéder aux mêmes données",
+      "Vous avez une seule instance (ex: préférences utilisateur, thème, panier)",
+      "Vous voulez éviter le prop drilling",
+      "Vous utilisez Svelte 5 et voulez la syntaxe moderne",
+    ],
     equivalents: [
       "React : Zustand avec selectors",
       "Vue 3 : Composition API (ref + computed dans composable)",
@@ -80,6 +101,13 @@ const poc = [
     recommendation: "UI libraries, thèmes, sous-arbres",
     descriptionText:
       "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
+    useCases: [
+      "Vous créez une UI library ou composants réutilisables",
+      "Vous gérez des thèmes, langues, configurations dans un sous-arbre",
+      "Vous voulez éviter le prop drilling sans état global",
+      "L'état est scopé à une partie de l'arbre (ex: modal, wizard)",
+      "Vous voulez un couplage implicite mais contrôlé",
+    ],
     equivalents: [
       "React : Context API (createContext + useContext)",
       "Vue : provide/inject",
@@ -103,6 +131,13 @@ const poc = [
     recommendation: "Logique réutilisable, tests unitaires",
     descriptionText:
       "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
+    useCases: [
+      "Vous voulez plusieurs instances indépendantes",
+      "Vous privilégiez l'explicite (props) à l'implicite (global)",
+      "Vous voulez une logique testable en isolation",
+      "Vous construisez une bibliothèque de composants réutilisables",
+      "Vous avez besoin de plusieurs listes filtrées sur la même page",
+    ],
     equivalents: [
       "React : Custom Hooks (useState + useEffect)",
       "Vue 3 : Composables (Composition API)",
@@ -126,6 +161,13 @@ const poc = [
     recommendation: "Logique métier complexe, OOP",
     descriptionText:
       "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
+    useCases: [
+      "Vous avez une logique métier complexe nécessitant encapsulation",
+      "Votre équipe préfère la programmation orientée objet",
+      "Vous voulez utiliser l'héritage et les interfaces TypeScript",
+      "Vous avez besoin de plusieurs instances indépendantes (ex: plusieurs formulaires)",
+      "Vous migrez depuis Angular/MobX et voulez une transition douce",
+    ],
     equivalents: [
       "React : Classes avec MobX (makeObservable)",
       "Vue : Classes reactives avec vue-class-component",
@@ -150,6 +192,13 @@ const poc = [
     recommendation: "Composants réutilisables, libraries",
     descriptionText:
       "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
+    useCases: [
+      "Vous créez une bibliothèque de composants hautement réutilisables",
+      "Vous voulez un découplage total entre logique et rendu",
+      "Vous avez besoin de maximum de flexibilité pour l'utilisateur du composant",
+      "Vous construisez des headless components (logique sans UI imposée)",
+      "Vous êtes à l'aise avec des patterns avancés (IoC, Strategy)",
+    ],
     equivalents: [
       "React : Render Props pattern ou Children as Function",
       "Vue : Scoped Slots (v-slot avec props)",
@@ -292,10 +341,23 @@ const poc = [
               
               {/* Description et équivalents techniques en deux colonnes */}
               <div class="gap-4 grid grid-cols-2 mb-3">
-                <div>
+                <div class="space-y-3">
                   <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                     {item.descriptionText}
                   </p>
+                  <div class="bg-purple-50 dark:bg-purple-900/20 p-3 border border-purple-200 dark:border-purple-800 rounded-lg">
+                    <h4 class="mb-2 font-semibold text-purple-900 dark:text-purple-100 text-xs">
+                      ✅ Utilisez ce pattern si :
+                    </h4>
+                    <ul class="space-y-1 text-purple-800 dark:text-purple-200 text-xs">
+                      {item.useCases.map((useCase: string) => (
+                        <li class="flex items-start">
+                          <span class="mr-1.5 text-purple-500">✓</span>
+                          <span>{useCase}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 <div class="bg-gray-50 dark:bg-gray-800/50 p-3 rounded-lg">
                   <h4 class="mb-2 font-semibold text-gray-900 dark:text-gray-100 text-xs">

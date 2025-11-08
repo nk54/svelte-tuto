@@ -21,6 +21,16 @@ import { Four } from "@/components/four";
         <li><strong>POO :</strong> Pattern Dependency Injection (IServiceProvider en .NET, Spring @Scope en Java)</li>
       </ul>
     </div>
+    <div class="bg-purple-50 dark:bg-purple-900/20 p-4 border border-purple-200 dark:border-purple-800 rounded-lg">
+      <p class="mb-2 font-semibold text-purple-900 dark:text-purple-100 text-sm">✅ Utilisez ce pattern si :</p>
+      <ul class="space-y-1 text-purple-800 dark:text-purple-200 text-sm">
+        <li>✓ Vous créez une <strong>UI library</strong> ou composants réutilisables</li>
+        <li>✓ Vous gérez des <strong>thèmes, langues, configurations</strong> dans un sous-arbre</li>
+        <li>✓ Vous voulez éviter le prop drilling <strong>sans état global</strong></li>
+        <li>✓ L'état est <strong>scopé à une partie</strong> de l'arbre (ex: modal, wizard)</li>
+        <li>✓ Vous voulez un couplage <strong>implicite mais contrôlé</strong></li>
+      </ul>
+    </div>
     <Four client:load />
   </div>
 </PrimaryLayout>
