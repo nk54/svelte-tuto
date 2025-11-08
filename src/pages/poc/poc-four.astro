@@ -11,6 +11,16 @@ import { Four } from "@/components/four";
       Évite le prop drilling en permettant aux composants descendants d'accéder directement au contexte. 
       Excellent pour les fonctionnalités qui nécessitent un état partagé dans une sous-arborescence spécifique.
     </p>
+    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+      <p class="mb-2 font-semibold text-sm">🔄 Équivalents dans d'autres frameworks :</p>
+      <ul class="space-y-1 text-sm">
+        <li><strong>React :</strong> Context API (createContext + useContext)</li>
+        <li><strong>Vue :</strong> provide/inject</li>
+        <li><strong>Angular :</strong> Dependency Injection avec services scoped</li>
+        <li><strong>Flutter :</strong> InheritedWidget</li>
+        <li><strong>POO :</strong> Pattern Dependency Injection (IServiceProvider en .NET, Spring @Scope en Java)</li>
+      </ul>
+    </div>
     <Four client:load />
   </div>
 </PrimaryLayout>

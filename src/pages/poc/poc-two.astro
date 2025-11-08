@@ -11,6 +11,15 @@ import { Two } from "@/components/two";
       Les composants s'abonnent automatiquement via la syntaxe <code>$store</code>. 
       Pattern éprouvé et familier pour les développeurs Svelte, parfait pour partager l'état entre composants non liés.
     </p>
+    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+      <p class="mb-2 font-semibold text-sm">🔄 Équivalents dans d'autres frameworks :</p>
+      <ul class="space-y-1 text-sm">
+        <li><strong>React :</strong> Redux (createStore + selectors)</li>
+        <li><strong>Vue :</strong> Pinia stores avec computed</li>
+        <li><strong>Angular :</strong> RxJS BehaviorSubject + combineLatest</li>
+        <li><strong>POO :</strong> Pattern Publish/Subscribe (IObservable en .NET, Observable en Java)</li>
+      </ul>
+    </div>
     <Two client:load />
   </div>
 </PrimaryLayout>

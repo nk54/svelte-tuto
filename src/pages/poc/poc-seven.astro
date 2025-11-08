@@ -11,6 +11,17 @@ import { Seven } from "@/components/seven";
       Le composant provider gère la logique et passe les données au snippet enfant qui décide du rendu. 
       Maximum de flexibilité et de réutilisabilité, idéal pour créer des composants hautement configurables.
     </p>
+    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+      <p class="mb-2 font-semibold text-sm">🔄 Équivalents dans d'autres frameworks :</p>
+      <ul class="space-y-1 text-sm">
+        <li><strong>React :</strong> Render Props pattern ou Children as Function</li>
+        <li><strong>Vue :</strong> Scoped Slots (v-slot avec props)</li>
+        <li><strong>Angular :</strong> ng-template avec context</li>
+        <li><strong>POO :</strong> Pattern Inversion of Control (IoC) + Template Method</li>
+        <li><strong>.NET :</strong> Delegates/Func&lt;T&gt; avec injection de comportement</li>
+        <li><strong>Java :</strong> Functional Interfaces + Strategy Pattern</li>
+      </ul>
+    </div>
     <Seven client:load />
   </div>
 </PrimaryLayout>

@@ -11,6 +11,15 @@ import { One } from "@/components/one";
       et <code>$derived</code>, puis passe les données et callbacks aux composants enfants via props. 
       Idéal pour les petites applications ou lorsque la hiérarchie des composants est peu profonde.
     </p>
+    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+      <p class="mb-2 font-semibold text-sm">🔄 Équivalents dans d'autres frameworks :</p>
+      <ul class="space-y-1 text-sm">
+        <li><strong>React :</strong> useState + props drilling</li>
+        <li><strong>Vue :</strong> data() + props</li>
+        <li><strong>Angular :</strong> @Input/@Output decorators</li>
+        <li><strong>POO :</strong> Pattern Observer (Events en .NET, Listeners en Java)</li>
+      </ul>
+    </div>
     <One client:load />
   </div>
 </PrimaryLayout>

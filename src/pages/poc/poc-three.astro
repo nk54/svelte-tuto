@@ -5,12 +5,22 @@ import { Three } from "@/components/three";
 
 <PrimaryLayout>
   <div class="flex flex-col gap-4 m-12">
-    <h1 class="font-bold text-3xl">Pattern 3 : Store avec Runes</h1>
+    <h1 class="font-bold text-3xl">Pattern 3 : Store avec Runes ⭐ RECOMMANDÉ</h1>
     <p class="text-muted-foreground text-lg">
       Modernise le pattern store avec les runes Svelte 5 (<code>$state</code>, <code>$derived</code>). 
       Une factory function retourne un objet avec des getters réactifs. 
       Combine la puissance des stores avec la syntaxe moderne des runes pour une réactivité fine-grained.
     </p>
+    <div class="bg-green-50 dark:bg-green-900/20 p-4 border-2 border-green-500 rounded-lg">
+      <p class="mb-2 font-semibold text-sm">🔄 Équivalents dans d'autres frameworks :</p>
+      <ul class="space-y-1 text-sm">
+        <li><strong>React :</strong> Zustand avec selectors</li>
+        <li><strong>Vue 3 :</strong> Composition API (ref + computed dans composable)</li>
+        <li><strong>Angular 16+ :</strong> Signals</li>
+        <li><strong>POO :</strong> Module Pattern + Reactive Extensions (Rx.NET, RxJava)</li>
+        <li><strong>Autre :</strong> Fine-grained reactivity comme SolidJS</li>
+      </ul>
+    </div>
     <Three client:load />
   </div>
 </PrimaryLayout>

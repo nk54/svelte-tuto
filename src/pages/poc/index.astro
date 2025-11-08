@@ -10,8 +10,16 @@ const poc = [
     performance: 9,
     performanceLabel: "9/10",
     recommendation: "Petites apps, hiérarchie peu profonde",
-    description:
+    descriptionText:
       "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
+    equivalents: [
+      "React : useState + props drilling",
+      "Vue : data() + props",
+      "Angular : @Input/@Output",
+      "POO : Pattern Observer (.NET Events, Java Listeners)",
+    ],
+    description:
+      "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications. Équivalent React : useState + props drilling. Équivalent Vue : data() + props. Équivalent Angular : @Input/@Output. Pattern classique de la programmation par composants, similaire au pattern Observer en POO (.NET Events, Java Listeners).",
     techDetails:
       "État local dans parent, props descendantes, callbacks remontants",
     pros: "Facile à comprendre, explicite",
@@ -25,8 +33,16 @@ const poc = [
     performance: 7,
     performanceLabel: "7/10",
     recommendation: "Apps moyennes, état global partagé",
-    description:
+    descriptionText:
       "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
+    equivalents: [
+      "React : Redux (createStore + selectors)",
+      "Vue : Pinia stores avec computed",
+      "Angular : RxJS BehaviorSubject + combineLatest",
+      "POO : Pattern Observer/Publish-Subscribe (.NET IObservable, Java Observable)",
+    ],
+    description:
+      "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling. Équivalent React : Redux (createStore + selectors). Équivalent Vue : Pinia stores avec computed. Équivalent Angular : RxJS BehaviorSubject + combineLatest. Pattern Observer avec état réactif, similaire au pattern Publish/Subscribe (.NET IObservable, Java Observable).",
     techDetails: "writable, derived, auto-subscription avec $",
     pros: "Éprouvé, découplé, réactif",
     cons: "Global scope, legacy dans Svelte 5",
@@ -39,8 +55,17 @@ const poc = [
     performance: 10,
     performanceLabel: "10/10",
     recommendation: "⭐ RECOMMANDÉ pour Svelte 5",
-    description:
+    descriptionText:
       "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
+    equivalents: [
+      "React : Zustand avec selectors",
+      "Vue 3 : Composition API (ref + computed dans composable)",
+      "Angular : Signals (Angular 16+)",
+      "SolidJS : createSignal (fine-grained reactivity)",
+      "POO : Module Pattern + Reactive Extensions (Rx.NET, RxJava)",
+    ],
+    description:
+      "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques. Équivalent React : Zustand avec selectors. Équivalent Vue 3 : Composition API (ref + computed dans composable). Équivalent Angular : Signals (Angular 16+). Pattern similaire au Module Pattern avec encapsulation, inspiré des Reactive Extensions (Rx.NET, RxJava). Fine-grained reactivity comme SolidJS.",
     techDetails: "$state, $derived, fonction factory, getters",
     pros: "Moderne (Svelte 5), performant, scopable",
     cons: "Syntaxe getters nécessaire",
@@ -53,8 +78,17 @@ const poc = [
     performance: 9,
     performanceLabel: "9/10",
     recommendation: "UI libraries, thèmes, sous-arbres",
-    description:
+    descriptionText:
       "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
+    equivalents: [
+      "React : Context API (createContext + useContext)",
+      "Vue : provide/inject",
+      "Angular : Dependency Injection (DI) avec services scoped",
+      "Flutter : InheritedWidget",
+      "POO : Pattern Dependency Injection (.NET IServiceProvider, Java Spring @Scope)",
+    ],
+    description:
+      "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props. Équivalent React : Context API (createContext + useContext). Équivalent Vue : provide/inject. Équivalent Angular : Dependency Injection (DI) avec services scoped. Pattern Dependency Injection classique en POO (.NET IServiceProvider scoped, Java Spring @Scope, InheritedWidget en Flutter).",
     techDetails: "setContext, getContext, contexte implicite",
     pros: "Pas de prop drilling, scopé à l'arbre",
     cons: "Implicite, couplage parent-enfant",
@@ -67,8 +101,17 @@ const poc = [
     performance: 9,
     performanceLabel: "9/10",
     recommendation: "Logique réutilisable, tests unitaires",
-    description:
+    descriptionText:
       "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
+    equivalents: [
+      "React : Custom Hooks (useState + useEffect)",
+      "Vue 3 : Composables (Composition API)",
+      "Angular : Standalone functions avec inject()",
+      "POO : Strategy Pattern / Composition over Inheritance",
+      "Extensions : .NET Extension Methods, Kotlin Functions, Swift Extensions, Rust Traits",
+    ],
+    description:
+      "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques. Équivalent React : Custom Hooks (useState + useEffect). Équivalent Vue 3 : Composables (Composition API). Équivalent Angular : Standalone functions avec inject(). Pattern Strategy/Composition over Inheritance en POO, similaire aux mixins (.NET Extension Methods, Kotlin Extension Functions, Swift Extensions, Rust Traits).",
     techDetails: "Fonction composable, retour d'objet réactif, pattern hooks",
     pros: "Très réutilisable, testable, composable",
     cons: "Nécessite passage explicite entre composants",
@@ -81,8 +124,17 @@ const poc = [
     performance: 8,
     performanceLabel: "8/10",
     recommendation: "Logique métier complexe, OOP",
-    description:
+    descriptionText:
       "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
+    equivalents: [
+      "React : Classes avec MobX (makeObservable)",
+      "Vue : Classes reactives avec vue-class-component",
+      "Angular : Services injectables (classes @Injectable)",
+      "MVVM : .NET WPF/Xamarin ViewModel, Android ViewModel",
+      "POO : Business Logic Layer avec encapsulation (Java Spring @Component)",
+    ],
+    description:
+      "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable. Équivalent React : Classes avec MobX (makeObservable). Équivalent Vue : Classes reactives avec vue-class-component. Équivalent Angular : Services injectables (classes @Injectable). Pattern OOP classique : ViewModel (MVVM en .NET WPF/Xamarin, Android ViewModel), State Manager (Java Spring @Component), Business Logic Layer avec encapsulation.",
     techDetails:
       "Classe ES6, $state/$derived, méthodes publiques, instanciable",
     pros: "OOP, encapsulé, multiple instances",
@@ -96,8 +148,17 @@ const poc = [
     performance: 10,
     performanceLabel: "10/10",
     recommendation: "Composants réutilisables, libraries",
-    description:
+    descriptionText:
       "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
+    equivalents: [
+      "React : Render Props pattern ou Children as Function",
+      "Vue : Scoped Slots (v-slot avec props)",
+      "Angular : ng-template avec context",
+      "POO : Inversion of Control (IoC), Template Method Pattern",
+      "Callbacks : .NET Delegates/Func<T>, Java Functional Interfaces, Strategy Pattern",
+    ],
+    description:
+      "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage. Équivalent React : Render Props pattern ou Children as Function. Équivalent Vue : Scoped Slots (v-slot avec props). Équivalent Angular : ng-template avec context. Pattern Inversion of Control (IoC) en POO, similaire au Template Method Pattern (.NET Delegates/Func<T>, Java Functional Interfaces, Strategy Pattern avec injection de comportement).",
     techDetails: "Snippet, render props, inversion de contrôle, slot props",
     pros: "Maximum de flexibilité, découplage total",
     cons: "Syntaxe complexe, courbe d'apprentissage",
@@ -228,9 +289,30 @@ const poc = [
                   💡 Recommandé pour : {item.recommendation}
                 </span>
               </div>
-              <p class="mb-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                {item.description}
-              </p>
+              
+              {/* Description et équivalents techniques en deux colonnes */}
+              <div class="gap-4 grid grid-cols-2 mb-3">
+                <div>
+                  <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                    {item.descriptionText}
+                  </p>
+                </div>
+                <div class="bg-gray-50 dark:bg-gray-800/50 p-3 rounded-lg">
+                  <h4 class="mb-2 font-semibold text-gray-900 dark:text-gray-100 text-xs">
+                    🔗 Équivalents techniques
+                  </h4>
+                  <ul class="space-y-1 text-gray-700 dark:text-gray-300 text-xs">
+                    {item.equivalents.map((equiv: string) => (
+                      <li class="flex items-start">
+                        <span class="mr-1.5 text-blue-500">▸</span>
+                        <span>{equiv}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Avantages et inconvénients */}
               <div class="gap-4 grid grid-cols-2 mt-3">
                 <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded">
                   <span class="text-green-700 dark:text-green-400 text-xs">
