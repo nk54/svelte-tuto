@@ -3,7 +3,7 @@
 	import type { WithoutChildren } from "bits-ui";
 	import { getEmblaContext } from "./context.js";
 	import { cn } from "@/lib/utils.js";
-	import { Button, type Props } from "@/components/ui/button/index.js";
+	import { Button, type Props } from "@/lib/ui/button/index.js";
 
 	let {
 		ref = $bindable(null),
@@ -22,7 +22,7 @@
 	{size}
 	aria-disabled={!emblaCtx.canScrollPrev}
 	class={cn(
-		"absolute size-8 rounded-full",
+		"absolute rounded-full size-8",
 		emblaCtx.orientation === "horizontal"
 			? "-left-12 top-1/2 -translate-y-1/2"
 			: "-top-12 left-1/2 -translate-x-1/2 rotate-90",

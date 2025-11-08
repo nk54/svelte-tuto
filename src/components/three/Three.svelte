@@ -1,7 +1,6 @@
 <script lang="ts">
-  let count: number = $state<number>(0);
+  import { Filters, Items } from "@/components/three";
 </script>
 
-<button onclick={() => count++} class="hover:bg-amber-200 border">
-  Count is {count}
-</button>
+<Filters />
+<Items />

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from "@/lib/utils.js";
-	import { Textarea } from "@/components/ui/textarea/index.js";
+	import { Textarea } from "@/lib/ui/textarea/index.js";
 	import type { ComponentProps } from "svelte";
 
 	let {
@@ -15,7 +15,7 @@
 	bind:ref
 	data-slot="input-group-control"
 	class={cn(
-		"flex-1 resize-none rounded-none border-0 bg-transparent py-3 shadow-none focus-visible:ring-0 dark:bg-transparent",
+		"flex-1 bg-transparent dark:bg-transparent shadow-none py-3 border-0 rounded-none focus-visible:ring-0 resize-none",
 		className
 	)}
 	bind:value

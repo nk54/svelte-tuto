@@ -2,7 +2,7 @@
 	import { RangeCalendar as RangeCalendarPrimitive } from "bits-ui";
 	import * as RangeCalendar from "./index.js";
 	import { cn, type WithoutChildrenOrChild } from "@/lib/utils.js";
-	import type { ButtonVariant } from "@/components/ui/button/index.js";
+	import type { ButtonVariant } from "@/lib/ui/button/index.js";
 	import type { Snippet } from "svelte";
 	import { isEqualMonth, type DateValue } from "@internationalized/date";
 
@@ -46,7 +46,7 @@
 	{weekdayFormat}
 	{disableDaysOutsideMonth}
 	class={cn(
-		"bg-background group/calendar p-3 [--cell-size:--spacing(8)] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+		"group/calendar bg-background [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent p-3 [--cell-size:--spacing(8)]",
 		className
 	)}
 	{locale}
