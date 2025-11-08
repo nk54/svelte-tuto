@@ -1,0 +1,20 @@
+---
+import "@/styles/global.css";
+const version = import.meta.env.PUBLIC_BUILD_VERSION;
+const date = import.meta.env.PUBLIC_BUILD_DATE;
+---
+
+<html lang="en" class="light-theme">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="build-version" content={version} />
+    <meta name="build-date" content={date} />
+    <title>AstroSvelte</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

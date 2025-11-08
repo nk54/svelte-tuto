@@ -1,16 +1,25 @@
 ---
-
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<PrimaryLayout>
+  <div class="place-self-center">
+    <div class="flex flex-col mx-auto mb-20 p-4 max-w-2xl">
+      <h1 class="mb-6 font-bold text-3xl">Bienvenue sur notre site Astro!</h1>
+      <ul class="space-y-2 list-disc list-inside">
+        <li>
+          <a href="/event" class="text-blue-500 hover:underline">Événements</a>
+        </li>
+        <li>
+          <a href="/todo" class="text-blue-500 hover:underline">Tâches</a>
+        </li>
+        <li>
+          <a href="/filter" class="text-blue-500 hover:underline">Filtres</a>
+        </li>
+        <li>
+          <a href="/shadcn" class="text-blue-500 hover:underline">Shadcn</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</PrimaryLayout>
