@@ -32,6 +32,16 @@ import { Six } from "@/components/six";
         <li>✓ Vous migrez depuis <strong>Angular/MobX</strong> et voulez une transition douce</li>
       </ul>
     </div>
+    <div class="bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800 rounded-lg">
+      <p class="mb-2 font-semibold text-red-900 dark:text-red-100 text-sm">❌ N'utilisez pas ce pattern si :</p>
+      <ul class="space-y-1 text-red-800 dark:text-red-200 text-sm">
+        <li>✗ Votre équipe préfère la <strong>programmation fonctionnelle</strong> (utilisez Pattern 5)</li>
+        <li>✗ Vous trouvez les classes <strong>trop verbeuses</strong> pour des cas simples</li>
+        <li>✗ Vous voulez suivre le <strong>style idiomatique Svelte 5</strong> (préférez Pattern 3 ou 5)</li>
+        <li>✗ Vous n'avez <strong>pas besoin d'héritage</strong> ou de hiérarchie de classes</li>
+        <li>✗ Vous cherchez la <strong>solution la plus légère</strong> en termes de code</li>
+      </ul>
+    </div>
     <Six client:load />
   </div>
 </PrimaryLayout>

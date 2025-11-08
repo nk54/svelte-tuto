@@ -31,6 +31,16 @@ import { Four } from "@/components/four";
         <li>✓ Vous voulez un couplage <strong>implicite mais contrôlé</strong></li>
       </ul>
     </div>
+    <div class="bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800 rounded-lg">
+      <p class="mb-2 font-semibold text-red-900 dark:text-red-100 text-sm">❌ N'utilisez pas ce pattern si :</p>
+      <ul class="space-y-1 text-red-800 dark:text-red-200 text-sm">
+        <li>✗ Vous voulez un <strong>état vraiment global</strong> partagé dans toute l'app (utilisez Pattern 3)</li>
+        <li>✗ Vous avez besoin d'un <strong>contrôle explicite</strong> via props (utilisez Pattern 1 ou 5)</li>
+        <li>✗ Les composants enfants ne sont <strong>pas dans l'arbre de rendu</strong> du parent</li>
+        <li>✗ Vous trouvez le couplage <strong>implicite difficile à débugger</strong></li>
+        <li>✗ Vous voulez <strong>tester les composants isolément</strong> sans setup de contexte</li>
+      </ul>
+    </div>
     <Four client:load />
   </div>
 </PrimaryLayout>

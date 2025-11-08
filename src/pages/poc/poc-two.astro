@@ -30,6 +30,16 @@ import { Two } from "@/components/two";
         <li>✓ ⚠️ <em>Note : Pour Svelte 5, préférez le Pattern 3 (Store Runes)</em></li>
       </ul>
     </div>
+    <div class="bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800 rounded-lg">
+      <p class="mb-2 font-semibold text-red-900 dark:text-red-100 text-sm">❌ N'utilisez pas ce pattern si :</p>
+      <ul class="space-y-1 text-red-800 dark:text-red-200 text-sm">
+        <li>✗ Vous démarrez un <strong>nouveau projet Svelte 5</strong> (utilisez Pattern 3 à la place)</li>
+        <li>✗ Vous voulez bénéficier de la <strong>réactivité fine-grained</strong> de Svelte 5</li>
+        <li>✗ Vous avez besoin de <strong>plusieurs instances</strong> du même état (préférez Pattern 5)</li>
+        <li>✗ Vous voulez un <strong>contrôle explicite</strong> sur qui accède au store</li>
+        <li>✗ Vous recherchez les <strong>dernières optimisations</strong> de performance</li>
+      </ul>
+    </div>
     <Two client:load />
   </div>
 </PrimaryLayout>

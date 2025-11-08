@@ -31,6 +31,16 @@ import { Five } from "@/components/five";
         <li>✓ Vous avez besoin de <strong>plusieurs listes filtrées</strong> sur la même page</li>
       </ul>
     </div>
+    <div class="bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800 rounded-lg">
+      <p class="mb-2 font-semibold text-red-900 dark:text-red-100 text-sm">❌ N'utilisez pas ce pattern si :</p>
+      <ul class="space-y-1 text-red-800 dark:text-red-200 text-sm">
+        <li>✗ Vous voulez un <strong>état global singleton</strong> partagé (utilisez Pattern 3)</li>
+        <li>✗ Vous trouvez le <strong>passage de props</strong> trop verbeux</li>
+        <li>✗ Vous préférez un <strong>accès implicite</strong> à l'état (utilisez Pattern 3 ou 4)</li>
+        <li>✗ Votre équipe n'est <strong>pas familière avec les hooks/composables</strong></li>
+        <li>✗ Vous voulez une <strong>approche OOP</strong> avec classes (utilisez Pattern 6)</li>
+      </ul>
+    </div>
     <Five client:load />
   </div>
 </PrimaryLayout>

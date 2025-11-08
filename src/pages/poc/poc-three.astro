@@ -31,6 +31,16 @@ import { Three } from "@/components/three";
         <li>✓ Vous utilisez <strong>Svelte 5</strong> et voulez la syntaxe moderne</li>
       </ul>
     </div>
+    <div class="bg-red-50 dark:bg-red-900/20 p-4 border border-red-200 dark:border-red-800 rounded-lg">
+      <p class="mb-2 font-semibold text-red-900 dark:text-red-100 text-sm">❌ N'utilisez pas ce pattern si :</p>
+      <ul class="space-y-1 text-red-800 dark:text-red-200 text-sm">
+        <li>✗ Vous avez besoin de <strong>plusieurs instances indépendantes</strong> du même état</li>
+        <li>✗ L'état doit être <strong>scopé localement</strong> à un composant ou une section</li>
+        <li>✗ Vous voulez un <strong>contrôle explicite</strong> via props sur qui accède à quoi</li>
+        <li>✗ Vous construisez un composant <strong>hautement réutilisable</strong> (préférez Pattern 5 ou 7)</li>
+        <li>✗ Vous êtes encore sur <strong>Svelte 3/4</strong> (utilisez Pattern 2 à la place)</li>
+      </ul>
+    </div>
     <Three client:load />
   </div>
 </PrimaryLayout>
