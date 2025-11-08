@@ -2,75 +2,105 @@
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
 
 const poc = [
-  { 
-    name: "One - Props + Callbacks", 
-    path: "poc-one", 
+  {
+    name: "One - Props + Callbacks",
+    path: "poc-one",
     complexity: "⭐",
     complexityLabel: "Simple",
-    description: "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
-    techDetails: "État local dans parent, props descendantes, callbacks remontants",
+    performance: "🟢",
+    performanceLabel: "Excellente",
+    recommendation: "Petites apps, hiérarchie peu profonde",
+    description:
+      "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
+    techDetails:
+      "État local dans parent, props descendantes, callbacks remontants",
     pros: "Facile à comprendre, explicite",
-    cons: "Prop drilling, verbeux si profondeur importante"
+    cons: "Prop drilling, verbeux si profondeur importante",
   },
-  { 
-    name: "Two - Derived Store", 
-    path: "poc-two", 
+  {
+    name: "Two - Derived Store",
+    path: "poc-two",
     complexity: "⭐⭐",
     complexityLabel: "Modéré",
-    description: "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
+    performance: "🟡",
+    performanceLabel: "Bonne",
+    recommendation: "Apps moyennes, état global partagé",
+    description:
+      "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
     techDetails: "writable, derived, auto-subscription avec $",
     pros: "Éprouvé, découplé, réactif",
-    cons: "Global scope, legacy dans Svelte 5"
+    cons: "Global scope, legacy dans Svelte 5",
   },
-  { 
-    name: "Three - Store (Runes)", 
-    path: "poc-three", 
+  {
+    name: "Three - Store (Runes)",
+    path: "poc-three",
     complexity: "⭐⭐⭐",
     complexityLabel: "Modéré+",
-    description: "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
+    performance: "🟢",
+    performanceLabel: "Excellente",
+    recommendation: "⭐ RECOMMANDÉ pour Svelte 5",
+    description:
+      "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
     techDetails: "$state, $derived, fonction factory, getters",
     pros: "Moderne (Svelte 5), performant, scopable",
-    cons: "Syntaxe getters nécessaire"
+    cons: "Syntaxe getters nécessaire",
   },
-  { 
-    name: "Four - Context API", 
-    path: "poc-four", 
+  {
+    name: "Four - Context API",
+    path: "poc-four",
     complexity: "⭐⭐⭐",
     complexityLabel: "Intermédiaire",
-    description: "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
+    performance: "🟢",
+    performanceLabel: "Excellente",
+    recommendation: "UI libraries, thèmes, sous-arbres",
+    description:
+      "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
     techDetails: "setContext, getContext, contexte implicite",
     pros: "Pas de prop drilling, scopé à l'arbre",
-    cons: "Implicite, couplage parent-enfant"
+    cons: "Implicite, couplage parent-enfant",
   },
-  { 
-    name: "Five - Composable/Hook", 
-    path: "poc-five", 
+  {
+    name: "Five - Composable/Hook",
+    path: "poc-five",
     complexity: "⭐⭐⭐⭐",
     complexityLabel: "Avancé",
-    description: "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
+    performance: "🟢",
+    performanceLabel: "Excellente",
+    recommendation: "Logique réutilisable, tests unitaires",
+    description:
+      "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
     techDetails: "Fonction composable, retour d'objet réactif, pattern hooks",
     pros: "Très réutilisable, testable, composable",
-    cons: "Nécessite passage explicite entre composants"
+    cons: "Nécessite passage explicite entre composants",
   },
-  { 
-    name: "Six - Classe .svelte.ts", 
-    path: "poc-six", 
+  {
+    name: "Six - Classe .svelte.ts",
+    path: "poc-six",
     complexity: "⭐⭐⭐⭐",
     complexityLabel: "Avancé",
-    description: "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
-    techDetails: "Classe ES6, $state/$derived, méthodes publiques, instanciable",
+    performance: "🟡",
+    performanceLabel: "Bonne",
+    recommendation: "Logique métier complexe, OOP",
+    description:
+      "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
+    techDetails:
+      "Classe ES6, $state/$derived, méthodes publiques, instanciable",
     pros: "OOP, encapsulé, multiple instances",
-    cons: "Plus verbeux, paradigme différent"
+    cons: "Plus verbeux, paradigme différent",
   },
-  { 
-    name: "Seven - Render Props/Slots", 
-    path: "poc-seven", 
+  {
+    name: "Seven - Render Props/Slots",
+    path: "poc-seven",
     complexity: "⭐⭐⭐⭐⭐",
     complexityLabel: "Expert",
-    description: "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
+    performance: "🟢",
+    performanceLabel: "Excellente",
+    recommendation: "Composants réutilisables, libraries",
+    description:
+      "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
     techDetails: "Snippet, render props, inversion de contrôle, slot props",
     pros: "Maximum de flexibilité, découplage total",
-    cons: "Syntaxe complexe, courbe d'apprentissage"
+    cons: "Syntaxe complexe, courbe d'apprentissage",
   },
 ];
 ---
@@ -78,25 +108,31 @@ const poc = [
 <PrimaryLayout>
   <div class="place-self-center">
     <div class="flex flex-col mx-auto mb-20 p-4 max-w-6xl">
-      <h1 class="mb-6 font-bold text-4xl">Patterns de Gestion d'État - Svelte 5</h1>
-      
+      <h1 class="mb-6 font-bold text-4xl">
+        Patterns de Gestion d'État - Svelte 5
+      </h1>
+
       <div class="bg-blue-50 dark:bg-blue-900/20 mb-8 p-4 rounded-lg">
         <h2 class="mb-2 font-semibold text-xl">🎯 7 Approches Comparées</h2>
         <p class="text-gray-700 dark:text-gray-300 text-sm">
-          Démonstration de 7 patterns pour gérer l'état et le filtrage de données, du plus simple au plus avancé.
-          Chaque implémentation résout le même problème : filtrer une liste d'items par catégorie.
+          Démonstration de 7 patterns pour gérer l'état et le filtrage de
+          données, du plus simple au plus avancé. Chaque implémentation résout
+          le même problème : filtrer une liste d'items par catégorie.
         </p>
       </div>
 
       <!-- Tableau comparatif -->
-      <div class="bg-white dark:bg-gray-900 shadow-lg mb-8 p-6 border dark:border-gray-700 rounded-xl overflow-x-auto">
+      <div
+        class="bg-white dark:bg-gray-900 shadow-lg mb-8 p-6 border dark:border-gray-700 rounded-xl overflow-x-auto"
+      >
         <h2 class="mb-4 font-bold text-2xl">📊 Tableau Comparatif</h2>
         <table class="w-full text-sm">
           <thead>
             <tr class="dark:border-gray-700 border-b-2">
               <th class="px-4 py-2 font-bold text-left">Pattern</th>
               <th class="px-4 py-2 font-bold text-center">Complexité</th>
-              <th class="px-4 py-2 font-bold text-left">Technologies</th>
+              <th class="px-4 py-2 font-bold text-center">Performance</th>
+              <th class="px-4 py-2 font-bold text-left">Recommandé pour</th>
               <th class="px-4 py-2 font-bold text-left">Avantages</th>
               <th class="px-4 py-2 font-bold text-left">Inconvénients</th>
             </tr>
@@ -104,21 +140,35 @@ const poc = [
           <tbody>
             {
               poc.map((item, index) => (
-                <tr class={`border-b dark:border-gray-800 ${index % 2 === 0 ? 'bg-gray-50 dark:bg-gray-800/50' : ''}`}>
+                <tr
+                  class={`border-b dark:border-gray-800 ${index % 2 === 0 ? "bg-gray-50 dark:bg-gray-800/50" : ""}`}
+                >
                   <td class="px-4 py-3">
-                    <a href={`/poc/${item.path}`} class="font-semibold text-blue-600 dark:text-blue-400 hover:underline">
+                    <a
+                      href={`/poc/${item.path}`}
+                      class="font-semibold text-blue-600 dark:text-blue-400 hover:underline"
+                    >
                       {item.name}
                     </a>
                   </td>
                   <td class="px-4 py-3 text-center whitespace-nowrap">
                     <span class="inline-block">{item.complexity}</span>
                     <br />
-                    <span class="text-gray-500 dark:text-gray-400 text-xs">{item.complexityLabel}</span>
+                    <span class="text-gray-500 dark:text-gray-400 text-xs">
+                      {item.complexityLabel}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 text-center whitespace-nowrap">
+                    <span class="inline-block text-xl">{item.performance}</span>
+                    <br />
+                    <span class="text-gray-500 dark:text-gray-400 text-xs">
+                      {item.performanceLabel}
+                    </span>
                   </td>
                   <td class="px-4 py-3">
-                    <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs">
-                      {item.techDetails}
-                    </code>
+                    <span class="bg-blue-50 dark:bg-blue-900/30 px-2 py-1 rounded font-medium text-blue-700 dark:text-blue-300 text-xs">
+                      {item.recommendation}
+                    </span>
                   </td>
                   <td class="px-4 py-3 text-green-700 dark:text-green-400 text-xs">
                     ✓ {item.pros}
@@ -142,23 +192,37 @@ const poc = [
               href={`/poc/${item.path}`}
               class="block hover:shadow-lg p-5 border hover:border-blue-400 dark:hover:border-blue-600 rounded-xl transition-all"
             >
-              <div class="flex justify-between items-start mb-2">
+              <div class="flex justify-between items-start mb-3">
                 <h3 class="font-bold text-blue-600 dark:text-blue-400 text-xl hover:underline">
                   {item.name}
                 </h3>
-                <span class="bg-gray-100 dark:bg-gray-800 ml-4 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
-                  {item.complexity} {item.complexityLabel}
+                <div class="flex gap-2 ml-4">
+                  <span class="bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
+                    {item.complexity} {item.complexityLabel}
+                  </span>
+                  <span class="bg-blue-100 dark:bg-blue-900/30 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
+                    {item.performance} {item.performanceLabel}
+                  </span>
+                </div>
+              </div>
+              <div class="bg-blue-50 dark:bg-blue-900/20 mb-3 px-3 py-2 rounded-lg">
+                <span class="font-semibold text-blue-900 dark:text-blue-200 text-xs">
+                  💡 Recommandé pour : {item.recommendation}
                 </span>
               </div>
-              <p class="mb-2 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+              <p class="mb-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
                 {item.description}
               </p>
               <div class="gap-4 grid grid-cols-2 mt-3">
                 <div class="bg-green-50 dark:bg-green-900/20 p-2 rounded">
-                  <span class="text-green-700 dark:text-green-400 text-xs">✓ {item.pros}</span>
+                  <span class="text-green-700 dark:text-green-400 text-xs">
+                    ✓ {item.pros}
+                  </span>
                 </div>
                 <div class="bg-orange-50 dark:bg-orange-900/20 p-2 rounded">
-                  <span class="text-orange-700 dark:text-orange-400 text-xs">⚠ {item.cons}</span>
+                  <span class="text-orange-700 dark:text-orange-400 text-xs">
+                    ⚠ {item.cons}
+                  </span>
                 </div>
               </div>
             </a>
@@ -166,15 +230,18 @@ const poc = [
         }
       </div>
 
-      <div class="bg-linear-to-r from-purple-50 dark:from-purple-900/20 to-blue-50 dark:to-blue-900/20 mt-8 p-6 border border-purple-200 dark:border-purple-800 rounded-xl">
+      <div
+        class="bg-linear-to-r from-purple-50 dark:from-purple-900/20 to-blue-50 dark:to-blue-900/20 mt-8 p-6 border border-purple-200 dark:border-purple-800 rounded-xl"
+      >
         <h3 class="mb-3 font-bold text-purple-900 dark:text-purple-100 text-xl">
           📖 Documentation Complète
         </h3>
         <p class="mb-3 text-gray-700 dark:text-gray-300 text-sm">
-          Pour une analyse détaillée avec tableaux comparatifs, avantages/inconvénients et recommandations par cas d'usage :
+          Pour une analyse détaillée avec tableaux comparatifs,
+          avantages/inconvénients et recommandations par cas d'usage :
         </p>
-        <a 
-          href="/PATTERNS_COMPARISON.md" 
+        <a
+          href="/poc/pattern"
           class="inline-block bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 px-4 py-2 rounded-lg font-semibold text-white text-sm transition-colors"
         >
           📄 Voir PATTERNS_COMPARISON.md

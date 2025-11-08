@@ -1,3 +1,7 @@
+---
+layout: ../../layouts/MarkdownLayout.astro
+---
+
 # Comparaison des Patterns de Gestion d'État dans Svelte 5
 
 Ce projet démontre **9 approches différentes** pour gérer l'état et le filtrage de données dans Svelte 5.

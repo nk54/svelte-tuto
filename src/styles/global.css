@@ -1,9 +1,9 @@
 @import "tailwindcss";
-
+@plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @import "./framework/shadcn.css";
 
-@import "./framework/app.css";
+@import "./framework/shadcn.css";
