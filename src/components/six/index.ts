@@ -3,3 +3,4 @@ export { default as Filters } from "./Filters.svelte";
 export { default as Items } from "./Items.svelte";
 
 export { type Item } from "./types";
+export { FilterManager } from "./FilterManager.svelte";

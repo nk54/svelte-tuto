@@ -2,62 +2,110 @@
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
 
 const poc = [
-  { name: "One", path: "poc-one", description: "Exemple de base" },
-  { name: "Two", path: "poc-two", description: "Exemple 2" },
-  { name: "Three", path: "poc-three", description: "Filtrage avec Store (Runes Svelte 5)" },
-  { name: "Four", path: "poc-four", description: "Filtrage avec Props + Callbacks" },
-  { name: "Five", path: "poc-five", description: "Filtrage avec Classe .svelte.ts" },
-  { name: "Six", path: "poc-six", description: "Filtrage avec Context API" },
-  { name: "Seven", path: "poc-seven", description: "Filtrage avec Composable/Hook" },
-  { name: "Eight", path: "poc-eight", description: "Filtrage avec Derived Store" },
-  { name: "Nine", path: "poc-nine", description: "Filtrage avec Render Props/Slots" },
+  { 
+    name: "Four - Props + Callbacks", 
+    path: "poc-four", 
+    complexity: "⭐ Simple",
+    description: "Pattern le plus simple : le composant parent gère l'état avec $state et passe les données via props aux enfants. Les enfants remontent les changements via callbacks. Idéal pour les petites applications.",
+    techDetails: "État local dans parent, props descendantes, callbacks remontants"
+  },
+  { 
+    name: "Eight - Derived Store", 
+    path: "poc-eight", 
+    complexity: "⭐⭐ Modéré",
+    description: "Pattern Svelte classique (v3/4) utilisant writable() et derived(). Les composants s'abonnent automatiquement avec la syntaxe $. État global partagé entre composants sans prop drilling.",
+    techDetails: "writable, derived, auto-subscription avec $"
+  },
+  { 
+    name: "Three - Store (Runes)", 
+    path: "poc-three", 
+    complexity: "⭐⭐ Modéré",
+    description: "Store moderne avec les nouvelles runes Svelte 5 ($state, $derived). Encapsule l'état dans une fonction qui retourne des getters réactifs. Alternative moderne aux stores classiques.",
+    techDetails: "$state, $derived, fonction factory, getters"
+  },
+  { 
+    name: "Six - Context API", 
+    path: "poc-six", 
+    complexity: "⭐⭐⭐ Intermédiaire",
+    description: "Utilise setContext/getContext pour partager l'état dans l'arbre de composants. Évite le prop drilling en rendant les données disponibles à tous les descendants sans passage explicite de props.",
+    techDetails: "setContext, getContext, contexte implicite"
+  },
+  { 
+    name: "Seven - Composable/Hook", 
+    path: "poc-seven", 
+    complexity: "⭐⭐⭐ Intermédiaire",
+    description: "Pattern inspiré de React hooks et Vue composables. Fonction useFilters() réutilisable qui retourne état et méthodes. Excellente réutilisabilité et composition de logiques.",
+    techDetails: "Fonction composable, retour d'objet réactif, pattern hooks"
+  },
+  { 
+    name: "Five - Classe .svelte.ts", 
+    path: "poc-five", 
+    complexity: "⭐⭐⭐⭐ Avancé",
+    description: "Approche orientée objet avec une classe TypeScript utilisant les runes. Encapsulation complète de la logique métier. Permet d'instancier plusieurs gestionnaires indépendants. Très testable.",
+    techDetails: "Classe ES6, $state/$derived, méthodes publiques, instanciable"
+  },
+  { 
+    name: "Nine - Render Props/Slots", 
+    path: "poc-nine", 
+    complexity: "⭐⭐⭐⭐⭐ Expert",
+    description: "Pattern avancé utilisant les Snippets Svelte 5 pour l'inversion de contrôle. Le composant FilterProvider expose l'état via un slot avec props. Maximum de flexibilité et découplage.",
+    techDetails: "Snippet, render props, inversion de contrôle, slot props"
+  },
 ];
 ---
 
 <PrimaryLayout>
   <div class="place-self-center">
-    <div class="flex flex-col mx-auto mb-20 p-4 max-w-4xl">
-      <h1 class="mb-6 font-bold text-4xl">Proof of Concepts - Patterns Svelte 5</h1>
+    <div class="flex flex-col mx-auto mb-20 p-4 max-w-5xl">
+      <h1 class="mb-6 font-bold text-4xl">Patterns de Gestion d'État - Svelte 5</h1>
       
       <div class="bg-blue-50 dark:bg-blue-900/20 mb-8 p-4 rounded-lg">
-        <h2 class="mb-2 font-semibold text-xl">🎯 Comparaison des Patterns de Gestion d'État</h2>
+        <h2 class="mb-2 font-semibold text-xl">🎯 7 Approches Comparées</h2>
         <p class="text-gray-700 dark:text-gray-300 text-sm">
-          Ce projet démontre 7 approches différentes pour gérer l'état et le filtrage de données dans Svelte 5.
-          Consultez <a href="/PATTERNS_COMPARISON.md" class="text-blue-600 dark:text-blue-400 underline">PATTERNS_COMPARISON.md</a> pour une comparaison détaillée.
+          Démonstration de 7 patterns pour gérer l'état et le filtrage de données, du plus simple au plus avancé.
+          Chaque implémentation résout le même problème : filtrer une liste d'items par catégorie.
         </p>
       </div>
 
-      <ul class="space-y-3">
+      <div class="space-y-4">
         {
           poc.map((item) => (
-            <li class="hover:shadow-md p-4 border rounded-lg transition-shadow">
-              <a
-                href={`/poc/${item.path}`}
-                class="flex flex-col"
-              >
-                <span class="font-semibold text-blue-600 dark:text-blue-400 text-lg hover:underline">
+            <a
+              href={`/poc/${item.path}`}
+              class="block hover:shadow-lg p-5 border hover:border-blue-400 dark:hover:border-blue-600 rounded-xl transition-all"
+            >
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-bold text-blue-600 dark:text-blue-400 text-xl hover:underline">
                   {item.name}
+                </h3>
+                <span class="bg-gray-100 dark:bg-gray-800 ml-4 px-3 py-1 rounded-full font-medium text-xs whitespace-nowrap">
+                  {item.complexity}
                 </span>
-                <span class="text-gray-600 dark:text-gray-400 text-sm">
-                  {item.description}
-                </span>
-              </a>
-            </li>
+              </div>
+              <p class="mb-2 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                {item.description}
+              </p>
+              <p class="font-mono text-gray-500 dark:text-gray-400 text-xs">
+                💡 {item.techDetails}
+              </p>
+            </a>
           ))
         }
-      </ul>
+      </div>
 
-      <div class="bg-gray-50 dark:bg-gray-800 mt-8 p-4 rounded-lg">
-        <h3 class="mb-2 font-semibold text-lg">📚 Légende des Patterns de Filtrage</h3>
-        <ul class="space-y-1 text-sm">
-          <li><strong>Three</strong> : Store global avec runes $state/$derived</li>
-          <li><strong>Four</strong> : Props descendantes + callbacks remontants</li>
-          <li><strong>Five</strong> : Classe orientée objet avec runes</li>
-          <li><strong>Six</strong> : Context API (setContext/getContext)</li>
-          <li><strong>Seven</strong> : Composable/Hook pattern (like React)</li>
-          <li><strong>Eight</strong> : Derived Store (writable + derived)</li>
-          <li><strong>Nine</strong> : Render Props avec Snippets Svelte 5</li>
-        </ul>
+      <div class="bg-gradient-to-r from-purple-50 dark:from-purple-900/20 to-blue-50 dark:to-blue-900/20 mt-8 p-6 border border-purple-200 dark:border-purple-800 rounded-xl">
+        <h3 class="mb-3 font-bold text-purple-900 dark:text-purple-100 text-xl">
+          📖 Documentation Complète
+        </h3>
+        <p class="mb-3 text-gray-700 dark:text-gray-300 text-sm">
+          Pour une analyse détaillée avec tableaux comparatifs, avantages/inconvénients et recommandations par cas d'usage :
+        </p>
+        <a 
+          href="/PATTERNS_COMPARISON.md" 
+          class="inline-block bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600 px-4 py-2 rounded-lg font-semibold text-white text-sm transition-colors"
+        >
+          📄 Voir PATTERNS_COMPARISON.md
+        </a>
       </div>
     </div>
   </div>

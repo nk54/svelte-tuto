@@ -8,20 +8,19 @@
     TableRow,
     TableCell,
   } from "@/lib/ui/table";
-  import type { FilterManager } from "./FilterManager.svelte";
+  import type { useFilters } from "./useFilters.svelte";
 
-  // Props : instance de la classe FilterManager
   type Props = {
-    manager: FilterManager;
+    filters: ReturnType<typeof useFilters>;
   };
 
-  let { manager }: Props = $props();
+  let { filters }: Props = $props();
 </script>
 
 <Table>
   <TableCaption>
-    {#if manager.selectedCategory}
-      Items de la catégorie {manager.selectedCategory}
+    {#if filters.selectedCategory}
+      Items de la catégorie {filters.selectedCategory}
     {:else}
       Liste de tous les items
     {/if}
@@ -34,12 +33,12 @@
     </TableRow>
   </TableHeader>
   <TableBody>
-    {#if manager.filteredItems.length === 0}
+    {#if filters.filteredItems.length === 0}
       <TableRow>
         <TableCell colspan={3}>Aucun item trouvé</TableCell>
       </TableRow>
     {:else}
-      {#each manager.filteredItems as item (item.id)}
+      {#each filters.filteredItems as item (item.id)}
         <TableRow>
           <TableCell>{item.name}</TableCell>
           <TableCell>{item.description}</TableCell>

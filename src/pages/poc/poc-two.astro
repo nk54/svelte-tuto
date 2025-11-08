@@ -1,9 +1,11 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import Two from "@/components/two";
+import { Two } from "@/components/two";
 ---
 
 <PrimaryLayout>
-  <p>Poc Two</p>
-  <Two client:load />
+  <div class="flex flex-col gap-4 m-12">
+    <p>Poc Two - Filtrage avec Derived Store</p>
+    <Two client:load />
+  </div>
 </PrimaryLayout>

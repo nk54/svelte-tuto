@@ -22,11 +22,5 @@
     "name": "Item 4",
     "description": "Description for Item 4",
     "category": "C"
-  },
-  {
-    "id": "5",
-    "name": "Item 5",
-    "description": "Description for Item 5",
-    "category": "A"
   }
 ]

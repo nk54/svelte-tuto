@@ -7,20 +7,23 @@
     SelectItem,
   } from "@/lib/ui/select";
 
+  // Props reçues du parent
   type Props = {
     categories: string[];
     selectedCategory: string | null;
-    setCategory: (category: string | null) => void;
+    onCategoryChange: (category: string | null) => void;
   };
 
-  let { categories, selectedCategory, setCategory }: Props = $props();
+  let { categories, selectedCategory, onCategoryChange }: Props = $props();
 
+  // État local pour le select
   let selectedValue = $state<string>("");
 
+  // Mettre à jour le parent quand la sélection change
   $effect(() => {
     const category =
       selectedValue && selectedValue !== "" ? selectedValue : null;
-    setCategory(category);
+    onCategoryChange(category);
   });
 </script>
 

@@ -6,30 +6,28 @@
     SelectGroup,
     SelectItem,
   } from "@/lib/ui/select";
-  import type { FilterManager } from "./FilterManager.svelte";
+  import type { useFilters } from "./useFilters.svelte";
 
-  // Props : instance de la classe FilterManager
   type Props = {
-    manager: FilterManager;
+    filters: ReturnType<typeof useFilters>;
   };
 
-  let { manager }: Props = $props();
+  let { filters }: Props = $props();
 
-  // État local pour le select
   let selectedValue = $state<string>("");
 
-  // Mettre à jour la classe quand la sélection change
   $effect(() => {
-    const category = selectedValue && selectedValue !== "" ? selectedValue : null;
-    manager.setCategory(category);
+    const category =
+      selectedValue && selectedValue !== "" ? selectedValue : null;
+    filters.setCategory(category);
   });
 </script>
 
 <Select bind:value={selectedValue} type="single">
   <SelectTrigger>
     <span>
-      {#if manager.selectedCategory}
-        Catégorie {manager.selectedCategory}
+      {#if filters.selectedCategory}
+        Catégorie {filters.selectedCategory}
       {:else}
         Toutes les catégories
       {/if}
@@ -38,7 +36,7 @@
   <SelectContent>
     <SelectGroup>
       <SelectItem value="">Toutes les catégories</SelectItem>
-      {#each manager.categories as category}
+      {#each filters.categories as category}
         <SelectItem value={category}>Catégorie {category}</SelectItem>
       {/each}
     </SelectGroup>

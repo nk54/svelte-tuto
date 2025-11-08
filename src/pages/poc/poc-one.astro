@@ -1,9 +1,16 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import One from "@/components/one";
+import { One } from "@/components/one";
 ---
 
 <PrimaryLayout>
-  <p>Poc One</p>
-  <One client:load />
+  <div class="flex flex-col gap-4 m-12">
+    <h1>Poc One</h1>
+    <h2>État dans parent (Props + callbacks)</h2>
+    <p>
+      Utilisation de props partagés entre les composants.<br />
+      Le composant orchestrateur distribue les props aux composants enfants.
+    </p>
+    <One client:load />
+  </div>
 </PrimaryLayout>

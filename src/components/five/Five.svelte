@@ -1,9 +1,12 @@
 <script lang="ts">
-  import { Filters, Items, FilterManager } from "@/components/five";
+  import { Filters, Items } from "@/components/five";
+  import { useFilters } from "./useFilters.svelte";
+  import rawData from "./data.json";
+  import type { Item } from "./types";
 
-  // Instancier la classe qui gère toute la logique
-  const manager = new FilterManager();
+  // Utiliser le composable/hook
+  const filters = useFilters(rawData as Item[]);
 </script>
 
-<Filters {manager} />
-<Items {manager} />
+<Filters {filters} />
+<Items {filters} />

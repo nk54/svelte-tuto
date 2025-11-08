@@ -10,6 +10,7 @@
   } from "@/lib/ui/table";
   import type { Item } from "./types";
 
+  // Props reçues du parent
   type Props = {
     items: Item[];
     selectedCategory: string | null;

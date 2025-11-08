@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { getContext } from "svelte";
   import {
     Table,
     TableCaption,
@@ -9,19 +8,20 @@
     TableRow,
     TableCell,
   } from "@/lib/ui/table";
-  import type { Item } from "./types";
+  import type { FilterManager } from "./FilterManager.svelte";
 
-  // Récupérer le contexte (pas de props nécessaires !)
-  const context = getContext<{
-    filteredItems: Item[];
-    selectedCategory: string | null;
-  }>("filterContext");
+  // Props : instance de la classe FilterManager
+  type Props = {
+    manager: FilterManager;
+  };
+
+  let { manager }: Props = $props();
 </script>
 
 <Table>
   <TableCaption>
-    {#if context.selectedCategory}
-      Items de la catégorie {context.selectedCategory}
+    {#if manager.selectedCategory}
+      Items de la catégorie {manager.selectedCategory}
     {:else}
       Liste de tous les items
     {/if}
@@ -34,12 +34,12 @@
     </TableRow>
   </TableHeader>
   <TableBody>
-    {#if context.filteredItems.length === 0}
+    {#if manager.filteredItems.length === 0}
       <TableRow>
         <TableCell colspan={3}>Aucun item trouvé</TableCell>
       </TableRow>
     {:else}
-      {#each context.filteredItems as item (item.id)}
+      {#each manager.filteredItems as item (item.id)}
         <TableRow>
           <TableCell>{item.name}</TableCell>
           <TableCell>{item.description}</TableCell>
