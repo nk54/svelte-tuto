@@ -1,11 +1,15 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import { Three } from "@/components/three";
+import { Four } from "@/components/four";
 ---
 
 <PrimaryLayout>
   <div class="flex flex-col gap-4 m-12">
-    <p>Poc Three</p>
-    <Three client:load />
+    <h1>Poc Four</h1>
+    <p>
+      Utilisation de props partagés entre les composants.<br />
+      Le composant orchestrateur distribue les props aux composants enfants.
+    </p>
+    <Four client:load />
   </div>
 </PrimaryLayout>

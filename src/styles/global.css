@@ -5,3 +5,5 @@
 @custom-variant dark (&:is(.dark *));
 
 @import "./framework/shadcn.css";
+
+@import "./framework/app.css";
