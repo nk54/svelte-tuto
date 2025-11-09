@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Filters, Items, FilterManager } from "@/components/six";
+  import { Filters, Items, FilterManager } from "@/components/poc/six";
 
   // Instancier la classe qui gère toute la logique
   const manager = new FilterManager();

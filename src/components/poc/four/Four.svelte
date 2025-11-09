@@ -1,6 +1,6 @@
 <script lang="ts">
   import { setContext } from "svelte";
-  import { Filters, Items } from "@/components/four";
+  import { Filters, Items } from "@/components/poc/four";
   import type { Item } from "./types";
   import rawData from "./data.json";
 

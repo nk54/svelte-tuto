@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Filters, Items } from "@/components/five";
+  import { Filters, Items } from "@/components/poc/five";
   import { useFilters } from "./useFilters.svelte";
   import rawData from "./data.json";
   import type { Item } from "./types";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { FilterProvider, Filters, Items } from "@/components/seven";
+  import { FilterProvider, Filters, Items } from "@/components/poc/seven";
 </script>
 
 <FilterProvider>

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Filters, Items } from "@/components/one";
+  import { Filters, Items } from "@/components/poc/one";
   import type { Item } from "./types";
   import rawData from "./data.json";
 
