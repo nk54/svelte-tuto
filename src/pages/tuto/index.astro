@@ -1,22 +1,19 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
 
-const links = [
-  { href: "/poc", label: "Proof of concept" },
-  { href: "/tuto", label: "Tutorials" },
-];
+const tuto = [{ title: "Array", link: "/tuto/array" }];
 ---
 
 <PrimaryLayout>
   <div class="place-self-center">
     <div class="flex flex-col mx-auto mb-20 p-4 max-w-2xl">
-      <h1>Bienvenue sur notre site Astro!</h1>
+      <h1>Liste des tutoriels</h1>
       <ul class="space-y-2 list-disc list-inside">
         {
-          links.map(({ href, label }) => (
+          tuto.map(({ title, link }) => (
             <li>
-              <a href={href} class="text-blue-500 hover:underline">
-                {label}
+              <a href={link} class="text-blue-500 hover:underline">
+                {title}
               </a>
             </li>
           ))
@@ -25,6 +22,3 @@ const links = [
     </div>
   </div>
 </PrimaryLayout>
-
->Tutorials
-
