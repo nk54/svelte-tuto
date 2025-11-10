@@ -1,6 +1,6 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import { Three } from "@/components/poc/three";
+import { App } from "@/components/poc/three";
 ---
 
 <PrimaryLayout>
@@ -41,6 +41,6 @@ import { Three } from "@/components/poc/three";
         <li>✗ Vous êtes encore sur <strong>Svelte 3/4</strong> (utilisez Pattern 2 à la place)</li>
       </ul>
     </div>
-    <Three client:load />
+    <App client:load />
   </div>
 </PrimaryLayout>

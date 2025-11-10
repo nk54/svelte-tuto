@@ -1,6 +1,6 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import { One } from "@/components/poc/one";
+import { App } from "@/components/poc/one";
 ---
 
 <PrimaryLayout>
@@ -40,6 +40,6 @@ import { One } from "@/components/poc/one";
         <li>✗ Votre application va <strong>grandir significativement</strong> (considérez Pattern 3 ou 5)</li>
       </ul>
     </div>
-    <One client:load />
+    <App client:load />
   </div>
 </PrimaryLayout>

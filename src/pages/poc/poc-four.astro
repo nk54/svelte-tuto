@@ -1,6 +1,6 @@
 ---
 import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
-import { Four } from "@/components/poc/four";
+import { App } from "@/components/poc/four";
 ---
 
 <PrimaryLayout>
@@ -41,6 +41,6 @@ import { Four } from "@/components/poc/four";
         <li>✗ Vous voulez <strong>tester les composants isolément</strong> sans setup de contexte</li>
       </ul>
     </div>
-    <Four client:load />
+    <App client:load />
   </div>
 </PrimaryLayout>

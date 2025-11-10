@@ -1,4 +1,4 @@
-export { default as Seven } from "./Seven.svelte";
+export { default as App } from "./App.svelte";
 export { default as FilterProvider } from "./FilterProvider.svelte";
 export { default as Filters } from "./Filters.svelte";
 export { default as Items } from "./Items.svelte";
