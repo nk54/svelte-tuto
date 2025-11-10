@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { App } from "@/components/tuto/advanced/reactive-classes";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <h1>Classes réactives</h1>
+    <App client:load />
+  </div>
+</PrimaryLayout>
