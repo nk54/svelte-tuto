@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Child from "./Child.svelte";
+  import Component from "./Component.svelte";
 
   let total = $state(0);
 
@@ -8,6 +8,6 @@
   }
 </script>
 
-<Child onTotalChange={handleTotalChange} />
+<Component onTotalChange={handleTotalChange} />
 
 <p class="mt-6">Total from child: {total}</p>
