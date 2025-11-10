@@ -12,9 +12,9 @@
   }
 </script>
 
-<input bind:value={content} />
+<input class="p-2 border" bind:value={content} />
 
-<button use:tooltip={() => ({ content, placement: "bottom" })}>
+<button class="place-self-center p-2 border" use:tooltip={() => ({ content, placement: "bottom" })}>
   Hover me
 </button>
 

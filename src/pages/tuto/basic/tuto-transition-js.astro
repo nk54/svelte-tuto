@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { App } from "@/components/tuto/basic/transition-js";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <h1>Utilisation de transition JS</h1>
+    <App client:load />
+  </div>
+</PrimaryLayout>
