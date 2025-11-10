@@ -1,0 +1,11 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { App } from "@/components/tuto/basic/transition-events";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <h1>Ecouter les changements d'état d'une transition</h1>
+    <App client:load />
+  </div>
+</PrimaryLayout>
