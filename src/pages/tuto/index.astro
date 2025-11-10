@@ -30,6 +30,9 @@ const advanced = [
   { title: "Reactive classes", link: "/tuto/advanced/tuto-reactive-classes" },
   { title: "SvelteDate", link: "/tuto/advanced/tuto-svelte-date" },
   { title: "Store", link: "/tuto/advanced/tuto-store" },
+  { title: "Snippets rendering", link: "/tuto/advanced/tuto-snippet-render" },
+  { title: "Snippets children", link: "/tuto/advanced/tuto-snippet-children" },
+  { title: "Snippets implicite", link: "/tuto/advanced/tuto-snippet-implicit" },
 ];
 ---
 
@@ -44,7 +47,7 @@ const advanced = [
         {
           basic.map(({ title, link }) => (
             <li>
-              <a href={link} class="text-blue-500 hover:underline">
+              <a href={link} class="text-green-500 hover:underline">
                 {title}
               </a>
             </li>
@@ -58,7 +61,7 @@ const advanced = [
         {
           advanced.map(({ title, link }) => (
             <li>
-              <a href={link} class="text-purple-500 hover:underline">
+              <a href={link} class="text-orange-500 hover:underline">
                 {title}
               </a>
             </li>
