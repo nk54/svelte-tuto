@@ -8,8 +8,8 @@
 
 <div class="gap-4 grid grid-cols-[5em_1fr] grid-rows-2 h-full">
   input
-  <textarea bind:value></textarea>
+  <textarea class="border" bind:value></textarea>
 
   output
-  <div class="prose">{@html marked(value)}</div>
+  <div class="border prose">{@html marked(value)}</div>
 </div>
