@@ -1,0 +1,13 @@
+---
+import PrimaryLayout from "@/layouts/PrimaryLayout.astro";
+import { Parent } from "@/components/tuto/events";
+---
+
+<PrimaryLayout>
+  <div class="flex flex-col gap-4 m-12">
+    <h1 class="font-bold text-3xl">
+      Tutoriel : Manipulation des événements en Svelte
+    </h1>
+    <Parent client:load />
+  </div>
+</PrimaryLayout>
