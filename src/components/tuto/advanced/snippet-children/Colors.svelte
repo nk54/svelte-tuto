@@ -1,7 +1,18 @@
 <script lang="ts">
-  import type { Color } from "./";
+  import type { Color, ColorFramework } from "./";
+  import type { Snippet } from "svelte";
 
-  let { data, field, header, row } = $props();
+  let {
+    data,
+    field,
+    header,
+    row,
+  }: {
+    data: ColorFramework[];
+    field: keyof ColorFramework;
+    header: Snippet;
+    row: Snippet<[ColorFramework]>;
+  } = $props();
 
   let search = $state("");
 
@@ -9,7 +20,7 @@
     if (search === "") return data;
 
     const regex = new RegExp(search, "i");
-    return data.filter((d: Color) => regex.test(d[field]));
+    return data.filter((d: ColorFramework) => regex.test(d[field]));
   });
 </script>
 
