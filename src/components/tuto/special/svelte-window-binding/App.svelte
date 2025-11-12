@@ -9,7 +9,7 @@
 <style>
   :global(body) {
     height: 400vw;
-    background: url("/img/tall-image.webp");
+    background: url("./tall-image.webp");
     background-size: cover;
   }
 

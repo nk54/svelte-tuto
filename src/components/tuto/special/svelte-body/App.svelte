@@ -1,42 +1,39 @@
 <script lang="ts">
-  let key = $state();
-  let keyCode = $state();
+  import kitten from "./kitten.png";
 
-  function onkeydown(event: KeyboardEvent) {
-    key = event.key;
-    keyCode = event.code;
-  }
+  let hereKitty = $state(false);
 </script>
 
-<svelte:window {onkeydown} />
+<svelte:body
+  onmouseenter={() => (hereKitty = true)}
+  onmouseleave={() => (hereKitty = false)}
+/>
 
-<div style="text-align: center">
-  {#if key}
-    <kbd>{key === " " ? "Space" : key}</kbd>
-    <p>{keyCode}</p>
-  {:else}
-    <p>Focus this window and press any key</p>
-  {/if}
-</div>
+<img
+  class={{ curious: hereKitty }}
+  alt="Kitten wants to know what's going on"
+  src={kitten.src}
+/>
+
+<p>
+  {hereKitty ? "Here, kitty, kitty!" : "Go away, cat!"}
+</p>
 
 <style>
-  div {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  img {
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    transform: translate(-80%, 0) rotate(-15deg);
+    transform-origin: 100% 100%;
+    transition: transform 0.4s;
   }
 
-  kbd {
-    border-radius: 4px;
-    font-size: 6em;
-    padding: 0.2em 0.5em;
-    background-color: #eeeeee;
-    border-top: 5px solid #f9f9f9;
-    border-left: 5px solid #f9f9f9;
-    border-right: 5px solid #aaaaaa;
-    border-bottom: 5px solid #aaaaaa;
-    color: #555;
+  .curious {
+    transform: translate(-15%, 0) rotate(0deg);
+  }
+
+  :global(body) {
+    overflow: hidden;
   }
 </style>

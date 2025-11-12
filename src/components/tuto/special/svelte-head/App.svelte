@@ -1,42 +1,27 @@
 <script lang="ts">
-  let key = $state();
-  let keyCode = $state();
-
-  function onkeydown(event: KeyboardEvent) {
-    key = event.key;
-    keyCode = event.code;
-  }
+  const themes = ["green", "red"];
+  let selected = $state(themes[0]);
+  // <link rel="stylesheet" href="/css/style-{selected}.css" />
 </script>
 
-<svelte:window {onkeydown} />
+<svelte:head>
+  <link
+    rel="stylesheet"
+    href="/src/components/tuto/special/svelte-head/style-{selected}.css"
+  />
+</svelte:head>
 
-<div style="text-align: center">
-  {#if key}
-    <kbd>{key === " " ? "Space" : key}</kbd>
-    <p>{keyCode}</p>
-  {:else}
-    <p>Focus this window and press any key</p>
-  {/if}
-</div>
+<h2>Welcome to my site!</h2>
 
-<style>
-  div {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
+<select bind:value={selected} class="border">
+  <option disabled>Choisir un style</option>
 
-  kbd {
-    border-radius: 4px;
-    font-size: 6em;
-    padding: 0.2em 0.5em;
-    background-color: #eeeeee;
-    border-top: 5px solid #f9f9f9;
-    border-left: 5px solid #f9f9f9;
-    border-right: 5px solid #aaaaaa;
-    border-bottom: 5px solid #aaaaaa;
-    color: #555;
-  }
-</style>
+  {#each themes as theme}
+    <option>{theme}</option>
+  {/each}
+</select>
+
+<p class="italic">
+  In server-side rendering (SSR) mode, contents of {"<svelte:head>"} are returned
+  separately from the rest of your HTML.
+</p>
