@@ -54,15 +54,29 @@ const advanced = [
     link: "/tuto/advanced/tuto-transition-animation",
   },
   { title: "Context API", link: "/tuto/advanced/tuto-context-api" },
-  { title: "Svelte Special", link: "/tuto/advanced/tuto-svelte-special" },
+];
+const special = [
+  {
+    title: "Svelte window keydown",
+    link: "/tuto/special/tuto-svelte-window-keydown",
+  },
+  {
+    title: "Svelte window binding",
+    link: "/tuto/special/tuto-svelte-window-binding",
+  },
+  { title: "Svelte document", link: "/tuto/special/tuto-svelte-document" },
+  { title: "Svelte body", link: "/tuto/special/tuto-svelte-body" },
+  { title: "Svelte head", link: "/tuto/special/tuto-svelte-head" },
+  { title: "Svelte element", link: "/tuto/special/tuto-svelte-element" },
+  { title: "Svelte boundary", link: "/tuto/special/tuto-svelte-boundary" },
 ];
 ---
 
 <PrimaryLayout>
   <div
-    class="place-self-center grid grid-cols-2 grid-rows-[auto,1fr] mx-auto -mt-4 p-4 max-w-2xl"
+    class="place-self-center grid grid-cols-3 grid-rows-[auto,1fr] mx-auto -mt-4 p-4 max-w-3xl"
   >
-    <h1 class="col-span-2">Liste des tutoriels</h1>
+    <h1 class="col-span-3">Liste des tutoriels</h1>
     <div class="col-start-1 row-start-2">
       <h2>Basique</h2>
       <ul class="space-y-2 list-disc list-inside">
@@ -84,6 +98,20 @@ const advanced = [
           advanced.map(({ title, link }) => (
             <li>
               <a href={link} class="text-orange-500 hover:underline">
+                {title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="col-start-3 row-start-2">
+      <h2>Spécial</h2>
+      <ul class="space-y-2 list-disc list-inside">
+        {
+          special.map(({ title, link }) => (
+            <li>
+              <a href={link} class="text-red-500 hover:underline">
                 {title}
               </a>
             </li>
