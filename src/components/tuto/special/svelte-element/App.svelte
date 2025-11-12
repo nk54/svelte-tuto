@@ -1,35 +1,28 @@
 <script lang="ts">
-  import kitten from "./kitten.png";
-
-  let hereKitty = $state(false);
+  const options = ["h1", "h2", "p", "b"];
+  let selected = $state(options[0]);
 </script>
 
-<svelte:body
-  onmouseenter={() => (hereKitty = true)}
-  onmouseleave={() => (hereKitty = false)}
-/>
+<select bind:value={selected} class="border">
+  {#each options as option}
+    <option value={option}>{option}</option>
+  {/each}
+</select>
 
-<img
-  class={{ curious: hereKitty }}
-  alt="Kitten wants to know what's going on"
-  src={kitten.src}
-/>
+<p>With if else if else if</p>
+{#if selected === "h1"}
+  <h1>I'm a <code>&lt;h1&gt;</code> element</h1>
+{:else if selected === "h2"}
+  <h2>I'm a <code>&lt;h2&gt;</code> element</h2>
+{:else if selected === "h3"}
+  <h3>I'm a <code>&lt;h3&gt;</code> element</h3>
+{:else if selected === "p"}
+  <p>I'm a <code>&lt;p&gt;</code> element</p>
+{:else if selected === "b"}
+  <b>I'm a <code>&lt;b&gt;</code> element</b>
+{/if}
 
-<style>
-  img {
-    position: absolute;
-    left: 0;
-    bottom: -60px;
-    transform: translate(-80%, 0) rotate(-15deg);
-    transform-origin: 100% 100%;
-    transition: transform 0.4s;
-  }
-
-  .curious {
-    transform: translate(-15%, 0) rotate(0deg);
-  }
-
-  :global(body) {
-    overflow: hidden;
-  }
-</style>
+<p>With svelte:element</p>
+<svelte:element this={selected}>
+  I'm a <code>&lt;{selected}&gt;</code> element
+</svelte:element>
