@@ -1,42 +1,18 @@
 <script lang="ts">
-  let key = $state();
-  let keyCode = $state();
+  let selection = $state("");
 
-  function onkeydown(event: KeyboardEvent) {
-    key = event.key;
-    keyCode = event.code;
-  }
+  const onselectionchange = (e: Event) => {
+    selection =
+      document.getSelection()?.toString() ?? "aucun texte selectionné";
+  };
 </script>
 
-<svelte:window {onkeydown} />
+<svelte:document {onselectionchange} />
 
-<div style="text-align: center">
-  {#if key}
-    <kbd>{key === " " ? "Space" : key}</kbd>
-    <p>{keyCode}</p>
-  {:else}
-    <p>Focus this window and press any key</p>
-  {/if}
-</div>
+<h2>Select a part of this text to fire events.</h2>
+<p>Text selected: {selection}</p>
 
-<style>
-  div {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  kbd {
-    border-radius: 4px;
-    font-size: 6em;
-    padding: 0.2em 0.5em;
-    background-color: #eeeeee;
-    border-top: 5px solid #f9f9f9;
-    border-left: 5px solid #f9f9f9;
-    border-right: 5px solid #aaaaaa;
-    border-bottom: 5px solid #aaaaaa;
-    color: #555;
-  }
-</style>
+<p class="italic">
+  Avoid mouseenter and mouseleave handlers on this element, as these events are
+  not fired on document in all browsers. Use {"<svelte:body>"} instead.
+</p>
