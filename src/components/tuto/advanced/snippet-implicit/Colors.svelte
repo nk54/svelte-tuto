@@ -5,12 +5,12 @@
   let {
     data,
     field,
-    header,
+    children,
     row,
   }: {
     data: ColorFramework[];
     field: keyof ColorFramework;
-    header: Snippet;
+    children: Snippet;
     row: Snippet<[ColorFramework]>;
   } = $props();
 
@@ -30,7 +30,7 @@
   </label>
 
   <div class="header">
-    {@render header()}
+    {@render children()}
   </div>
 
   <div class="content">
